@@ -1,0 +1,48 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+
+{% block profile %}    
+        <div class="w3-container">
+          <p>Search by Photo Code</p>
+          <input type="text" placeholder="Search.." name="search">
+          <hr>
+          <p> Search by Date</p>
+          <input type="text" placeholder="Search.." name="search">
+        </div>     
+      <br>
+
+{% endblock profile %}
+
+{% block content %}
+<div class="w3-container" >
+    <p>VALIDATION FORM</p>    
+    <input class="w3-input w3-border w3-animate-input" placeholder="Enter 'Photo Code' here..."type="text" style="width:30%">
+  <hr>  
+<table class="w3-table w3-striped w3-border" style="margin: 10px;">
+    <tr>
+    <th>Photo Code</th>
+    <th>Date</th>
+    <th>Validation</th>
+    </tr>
+    <tr>
+    <td>order_code-16-20</td>
+    <td>04.02.2021</td>
+    <td><input class="w3-check" type="checkbox">
+        <label></label></td>
+    </tr>
+    <tr>
+    <td>order_code-16-25</td>
+    <td>04.02.2021</td>
+    <td><input class="w3-check" type="checkbox">
+        <label></label></td>
+    </tr>
+    <tr>
+    <td class="w3-green" >order_code-16-31</td>
+    <td class="w3-green" >04.02.2021</td>
+    <td class="w3-green" ><input class="w3-check w3-green" checked="checked" type="checkbox">
+        <label>  Checked</label></td>
+    </tr>
+</table>
+{% endblock content%}

@@ -1,0 +1,10 @@
+asgiref==3.2.7
+Django==3.0.7
+django-ckeditor==5.9.0
+django-js-asset==1.2.2
+django-recaptcha==2.0.6
+gunicorn==20.0.4
+Pillow==7.1.2
+pytz==2019.3
+sqlparse==0.3.1
+wagtail-django-recaptcha==1.0

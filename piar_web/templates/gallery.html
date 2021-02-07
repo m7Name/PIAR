@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<header>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% load static %}
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />   
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!--<script type="text/javascript" src="{% static 'mny.js' %}"></script> -->
+<script type="text/javascript" src="{% static 'fancybox/lib/jquery.mousewheel.pack.js' %}"></script>
+<link rel="stylesheet" href="{% static 'fancybox/source/jquery.fancybox.css' %}" type="text/css" media="screen" />
+<script type="text/javascript" src="{% static 'fancybox/source/jquery.fancybox.pack.js' %}"></script>
+<link rel="stylesheet" href="{% static 'fancybox/source/helpers/jquery.fancybox-buttons.css' %}" type="text/css' %}" media="screen" />
+<script type="text/javascript" src="{% static 'fancybox/source/helpers/jquery.fancybox-buttons.js' %}"></script>
+<script type="text/javascript" src="{% static 'fancybox/source/helpers/jquery.fancybox-media.js' %}"></script>
+<link rel="stylesheet" href="{% static 'fancybox/source/helpers/jquery.fancybox-thumbs.css' %}" type="text/css' %}" media="screen" />
+<script type="text/javascript" src="{% static 'fancybox/source/helpers/jquery.fancybox-thumbs.js' %}"></script>
+
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</header>
+<body>
+
+<div class="w3-top">
+    <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+        <a href="/" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Home</a>
+        <a href="{% url 'dashboard' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Dashboard"><i class="fa fa-wrench w3-margin-right"></i>Dashboard</a>
+        <a href="{% url 'gallery' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Photo"><i class="fa fa-camera-retro w3-margin-right"></i>Photo <span class="w3-badge w3-green">10</span></a>
+        <a href="{% url 'check' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Check list"><i class="fa fa-check-square-o w3-margin-right"></i>Check list</a>
+        <a href="{% url 'admin:index' %}" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account"><i class="fa fa-cubes w3-margin-right"></i>Administration</a>
+        <a href="{% url 'logout' %}" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account"><i class="fa fa-sign-out w3-margin-right"></i>Logout</a>
+    </div>
+    </div>
+<br>
+<hr>
+<br>
+<div class="w3-container w3-row-padding w3-margin-top">
+
+<div class="w3-third">
+<div class="w3-card" style="border-style: solid; border-width: 1px;">
+    <a class="fancybox-thumb" rel="fancybox-thumb" href="http://farm6.staticflickr.com/5444/17679973232_568353a624_b.jpg" title="Golden Manarola (Sanjeev Deo)">
+        <img src="http://farm6.staticflickr.com/5444/17679973232_568353a624_m.jpg"  style="width:100%" alt="" />
+    </a>
+<div class="w3-container">
+<h5>5 Terre</h5>
+</div>
+</div>
+</div>
+
+<div class="w3-third">
+    <div class="w3-card" style="margin-bottom: 5px; border-style: solid; border-width: 1px;">
+    <a class="fancybox-thumb" rel="fancybox-thumb" href="http://farm6.staticflickr.com/5444/17679973232_568353a624_b.jpg" title="Golden Manarola (Sanjeev Deo)">
+        <img src="http://farm6.staticflickr.com/5444/17679973232_568353a624_m.jpg"  style="width:100%" alt="" />
+    </a>
+<div class="w3-container">
+<h5>Monterosso</h5>
+</div>
+</div>
+</div>
+
+<div class="w3-third">
+<div class="w3-card" style="margin-bottom: 5px; border-style: solid; border-width: 1px;">
+    <a class="fancybox-thumb" rel="fancybox-thumb" href="http://farm6.staticflickr.com/5444/17679973232_568353a624_b.jpg" title="Golden Manarola (Sanjeev Deo)">
+        <img src="http://farm6.staticflickr.com/5444/17679973232_568353a624_m.jpg"  style="width:100%" alt="" />
+    </a>
+<div class="w3-container">
+<h5>Vernazza</h5>
+</div>
+</div>
+</div>
+
+
+<div class="w3-third">
+    <div class="w3-card" style="margin-bottom: 5px; border-style: solid; border-width: 1px;">
+    <a class="fancybox-thumb" rel="fancybox-thumb" href="http://farm6.staticflickr.com/5444/17679973232_568353a624_b.jpg" title="Golden Manarola (Sanjeev Deo)">
+        <img src="http://farm6.staticflickr.com/5444/17679973232_568353a624_m.jpg"  style="width:100%" alt="" />
+    </a>
+<div class="w3-container">
+<h5>Manarola</h5>
+</div>
+</div>
+</div>
+
+<div class="w3-third">
+    <div class="w3-card" style="margin-bottom: 5px; border-style: solid; border-width: 1px;">
+    <a class="fancybox-thumb" rel="fancybox-thumb" href="http://farm6.staticflickr.com/5444/17679973232_568353a624_b.jpg" title="Golden Manarola (Sanjeev Deo)">
+        <img src="http://farm6.staticflickr.com/5444/17679973232_568353a624_m.jpg"  style="width:100%" alt="" />
+    </a>
+<div class="w3-container">
+<h5>Corniglia</h5>
+</div>
+</div>
+</div>
+
+<div class="w3-third">
+    <div class="w3-card" style="margin-bottom: 5px; border-style: solid; border-width: 1px;">
+    <a class="fancybox-thumb" rel="fancybox-thumb" href="http://farm6.staticflickr.com/5444/17679973232_568353a624_b.jpg" title="Golden Manarola (Sanjeev Deo)">
+        <img src="http://farm6.staticflickr.com/5444/17679973232_568353a624_m.jpg"  style="width:100%" alt="" />
+    </a>
+<div class="w3-container">
+<h5>Riomaggiore</h5>
+</div>
+</div>
+</div>
+<div class="w3-third">
+    <div class="w3-card" style="margin-bottom: 5px; border-style: solid; border-width: 1px;">
+        <a class="fancybox-thumb" rel="fancybox-thumb" href="http://farm6.staticflickr.com/5444/17679973232_568353a624_b.jpg" title="Golden Manarola (Sanjeev Deo)">
+            <img src="http://farm6.staticflickr.com/5444/17679973232_568353a624_m.jpg"  style="width:100%" alt="" />
+        </a>
+    <div class="w3-container">
+    <h5>Riomaggiore</h5>
+    </div>
+    </div>
+    </div><div class="w3-third">
+        <div class="w3-card" style="margin-bottom: 5px; border-style: solid; border-width: 1px;">
+            <a class="fancybox-thumb" rel="fancybox-thumb" href="http://farm6.staticflickr.com/5444/17679973232_568353a624_b.jpg" title="Golden Manarola (Sanjeev Deo)">
+                <img src="http://farm6.staticflickr.com/5444/17679973232_568353a624_m.jpg"  style="width:100%" alt="" />
+            </a>
+        <div class="w3-container">
+        <h5>Riomaggiore</h5>
+        </div>
+        </div>
+        </div><div class="w3-third">
+            <div class="w3-card" style="margin-bottom: 5px; border-style: solid; border-width: 1px;">
+                <a class="fancybox-thumb" rel="fancybox-thumb" href="http://farm6.staticflickr.com/5444/17679973232_568353a624_b.jpg" title="Golden Manarola (Sanjeev Deo)">
+                    <img src="http://farm6.staticflickr.com/5444/17679973232_568353a624_m.jpg"  style="width:100%" alt="" />
+                </a>
+            <div class="w3-container">
+            <h5>Riomaggiore</h5>
+            </div>
+            </div>
+            </div><div class="w3-third">
+                <div class="w3-card" style="margin-bottom: 5px; border-style: solid; border-width: 1px;">
+                    <a class="fancybox-thumb" rel="fancybox-thumb" href="http://farm6.staticflickr.com/5444/17679973232_568353a624_b.jpg" title="Golden Manarola (Sanjeev Deo)">
+                        <img src="http://farm6.staticflickr.com/5444/17679973232_568353a624_m.jpg"  style="width:100%" alt="" />
+                    </a>
+                <div class="w3-container">
+                <h5>Riomaggiore</h5>
+                </div>
+                </div>
+                </div>
+                                                                                                                                                                                                                                                                                                                        
+</div>
+<script>
+    $(document).ready(function() {
+        $(".fancybox-thumb").fancybox({
+            prevEffect	: 'none',
+            nextEffect	: 'none',
+            helpers	: {
+                title	: {
+                    type: 'outside'
+                },
+                thumbs	: {
+                    width	: 50,
+                    height	: 50
+                }
+            }
+        });
+    });
+              </script>
+</body>
+</html>
+
+
+
+
+<html>

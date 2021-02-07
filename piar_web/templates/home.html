@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+{% block content %}
+
+    <div class="w3-container">
+        <h2>Task Lists</h2>
+        <p>List of active packing tasks</p>
+      
+        <table class="w3-table w3-striped w3-border">
+          <tr>
+            <th>Order</th>
+            <th>Product</th>
+            <th>PCS</th>
+            <th>Tools</th>
+          </tr>
+
+          {% for orders in orders %}
+            {% if orders.order_in_work%}
+            <tr class="w3-margin">
+                <td class="w3-margin" >{{orders.order_code}}</td>
+                <td>{{orders.order_product_name}} # {{orders.workers_are_doing}}</td>
+                <td>{{orders.order_done_pcs}} / {{orders.order_pcs}}</td>
+                <td>
+                    {% if orders.workers_are_doing == True %}
+                      <a href="/order/{{orders.order_code}}" title="TEST"><i class="fa fa-eye fa-2x" style="color: green"></i></a>
+                    {% else %}
+                      <a href="/order/{{orders.order_code}}" title="TEST"><i class="fa fa-eye fa-2x"></i></a>
+                    {% endif %}
+                    <a href="" title="TEST" ><i class="fa fa-wrench fa-2x"></i></a>  
+                    <a href="" title="TEST"><i class="fa fa-arrow-right fa-2x"></i></a>
+                </td>
+              </tr>                
+            {% endif %}
+          {% endfor %}                
+        </table>
+      </div>
+<br>
+{% endblock content%}
