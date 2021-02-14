@@ -7,7 +7,11 @@ from work.views import (
     dashboard_view,
     working_pick_order,
     check_view,
-    photo_view,    
+    photo_view,
+    inventory_sell_marked,
+    photo_search,
+    check_list_validation, 
+    unmark_all,   
 )
 
 admin.site.site_header = 'Piar test'                    # default: "Django Administration"
@@ -22,5 +26,10 @@ urlpatterns = [
     path('check/', check_view, name="check"),
     path('', home_screen_view, name="home"),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('order/<working_order>', working_pick_order, name='working_order'),        
+    path('order/<working_order>', working_pick_order, name='working_order'),
+    path('dashboard/inventory_sell/', inventory_sell_marked, name='inventory_sell_marked'),   
+    path('search_results/', photo_search, name='photo_search'),
+    path('validation/', check_list_validation, name='validation'),
+    path('check/unmark/', unmark_all, name='unmark'),   
+
 ]

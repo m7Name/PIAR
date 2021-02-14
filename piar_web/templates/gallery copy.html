@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<header>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% load static %}
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />   
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!--<script type="text/javascript" src="{% static 'mny.js' %}"></script> -->
+<script type="text/javascript" src="{% static 'fancybox/lib/jquery.mousewheel.pack.js' %}"></script>
+<link rel="stylesheet" href="{% static 'fancybox/source/jquery.fancybox.css' %}" type="text/css" media="screen" />
+<script type="text/javascript" src="{% static 'fancybox/source/jquery.fancybox.pack.js' %}"></script>
+<link rel="stylesheet" href="{% static 'fancybox/source/helpers/jquery.fancybox-buttons.css' %}" type="text/css' %}" media="screen" />
+<script type="text/javascript" src="{% static 'fancybox/source/helpers/jquery.fancybox-buttons.js' %}"></script>
+<script type="text/javascript" src="{% static 'fancybox/source/helpers/jquery.fancybox-media.js' %}"></script>
+<link rel="stylesheet" href="{% static 'fancybox/source/helpers/jquery.fancybox-thumbs.css' %}" type="text/css' %}" media="screen" />
+<script type="text/javascript" src="{% static 'fancybox/source/helpers/jquery.fancybox-thumbs.js' %}"></script>
+<link rel="stylesheet" href="https://unpkg.com/bootstrap@4/dist/css/bootstrap.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fengyuanchen.github.io/viewerjs/css/viewer.css">
+  <style>
+    .pictures {
+      list-style: none;
+      margin: 0;
+      max-width: 100%;
+      padding: 0;
+    }
+
+    .pictures > li {
+      border: 1px solid transparent;
+      float: left;
+      height: calc(100% / 10);
+      margin: 0 -1px -1px 0;
+      overflow: hidden;
+      width: calc(100% / 10);
+    }
+
+    .pictures > li > img {
+      cursor: zoom-in;
+      width: 100%;
+    }
+    .borderlist {
+    list-style-position:inside;
+    border: 1px solid black;
+}
+.borderlist 
+{
+    border: 1px solid black;
+    list-style-position: inside;
+}
+.viewer-title {
+    font-size: 30px;
+}
+  </style>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</header>
+<body>
+
+<div class="w3-top">
+    <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+        <a href="/" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Home</a>
+        <a href="{% url 'dashboard' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Dashboard"><i class="fa fa-wrench w3-margin-right"></i>Dashboard</a>
+        <a href="{% url 'gallery' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Photo"><i class="fa fa-camera-retro w3-margin-right"></i>Photo <span class="w3-badge w3-green">{{allphoto}}</span></a>
+        <a href="{% url 'check' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Check list"><i class="fa fa-check-square-o w3-margin-right"></i>Check list</a>
+        <a href="{% url 'admin:index' %}" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account"><i class="fa fa-cubes w3-margin-right"></i>Administration</a>
+        <a href="{% url 'logout' %}" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account"><i class="fa fa-sign-out w3-margin-right"></i>Logout</a>
+    </div>
+    </div>
+
+<div class="w3-container w3-row-padding w3-margin-top">
+    <br>
+    <hr>
+    <br>
+    <h1>{{orders.order_product_name}} </h1>
+    <h1>{{orders.order_code}}</h1>
+    <br>
+    <hr>
+    <br>
+    <div id="galley">
+        <ul class="pictures">
+            {% for photo in photo %}
+            <li>
+                    <img title="{{photo.photo_date}} / {{photo.photo_time}}" style="padding: 3px;" data-original="../{{photo.photo_dir}}" src="../{{photo.photo_dir}}" alt="{{photo.photo_code}}"> <div style="width: 85%; margin: auto;" class="w3-round  w3-theme-d2"><center>{{photo.photo_code}}</center></div>
+               
+            </li>
+            {% endfor %}    
+        </ul>
+      </div>                                                                                                                                                                                                                                                                                                                     
+</div>
+<script src="https://unpkg.com/jquery@3/dist/jquery.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap@4/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://fengyuanchen.github.io/viewerjs/js/viewer.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    var galley = document.getElementById('galley');
+    var viewer = new Viewer(galley, {
+      url: 'data-original',
+      title: function (image) {
+        return image.alt + ' (' + (this.index + 1) + '/' + this.length + ')';
+      },
+    });
+  });
+</script>
+</body>
+</html>
+
+
+
+
+<html>

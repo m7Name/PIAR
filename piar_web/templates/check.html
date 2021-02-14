@@ -5,34 +5,70 @@
 
 {% block profile %}    
         <div class="w3-container">
+          <br>
+          <p> VALIDATION FORM</p>          
+          <form id="Form" action="{% url 'validation' %}" method="post">
+            {% csrf_token %}
+            <input style="margin: auto%; max-width: 150px;" id="here"name="check" type="text" placeholder="Enter sticker code.." value="" />&nbsp;
+            <input id="subHere" type="submit" value="Submit"  />           
+            
+            <input type="button" onclick="window.location.href='unmark/';" value="#" />
+          </form>
+        <hr>  
           <p>Search by Photo Code</p>
           <input type="text" placeholder="Search.." name="search">
-          <hr>
-          <p> Search by Date</p>
-          <input type="text" placeholder="Search.." name="search">
-        </div>     
+        </div>              
       <br>
 
 {% endblock profile %}
 
 {% block content %}
-<div class="w3-container" >
-    <p>VALIDATION FORM</p>    
-    <input class="w3-input w3-border w3-animate-input" placeholder="Enter 'Photo Code' here..."type="text" style="width:30%">
-  <hr>  
-<table class="w3-table w3-striped w3-border" style="margin: 10px;">
+<div class="w3-container" onload="myFunction()">
+  <br> 
+  <div class="w3-light-grey">
+    <div id="myBar" class="w3-container w3-green w3-cente" style="height:24px;width:{{procent}}%"> {{procent}} %</div>
+  </div>
+  <p>Checked <span id="demo">{{cheked}}</span> of {{need_to_check}} packs</p>
+  <hr>
+<table class="w3-table w3-striped w3-border w3-centered" style="margin-top: 10px; margin-bottom: 10px;">
     <tr>
     <th>Photo Code</th>
+    <th>Photo</th>
+    <th>PDF</th>
+    <th>Time</th>
     <th>Date</th>
     <th>Validation</th>
     </tr>
-    <tr>
-    <td>order_code-16-20</td>
-    <td>04.02.2021</td>
-    <td><input class="w3-check" type="checkbox">
-        <label></label></td>
-    </tr>
-    <tr>
+    {% for photo in photo %}
+      {% if photo.photo_check_list == False %}
+      <tr style="margin: 50px;">
+        <td sty>{{photo.photo_code}}</td>
+        <td><a href="/{{photo.photo_dir}}"> <i class="fa fa-file-image-o" aria-hidden="true"></i></a></td>
+        <td><a href="#"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+        <td>{{photo.photo_time}}</td>
+        <td>{{photo.photo_date}}</td>
+        
+        <td><input class="w3-check" type="checkbox">
+            <label></label></td>
+        </tr>
+        
+      {% else %}
+      <tr style="box-shadow: inset 0px 0px 2px rgba(0,0,0,0.9); font-weight: bold; border: 2px solid green;">
+        <td>{{photo.photo_code}}</td>
+        <td><a href="#"></a><i class="fa fa-file-image-o" aria-hidden="true"></i></a></td>
+        <td><a href="#"></a><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+        <td>{{photo.photo_time}}</td>
+        <td>{{photo.photo_date}}</td>        
+        <td><input class="w3-check w3-green" checked="checked" type="checkbox">
+          <label>  Checked</label></td>
+        </tr>
+      {% endif %}
+    {% endfor %}
+
+
+
+   
+    <!-- <tr>
     <td>order_code-16-25</td>
     <td>04.02.2021</td>
     <td><input class="w3-check" type="checkbox">
@@ -43,6 +79,6 @@
     <td class="w3-green" >04.02.2021</td>
     <td class="w3-green" ><input class="w3-check w3-green" checked="checked" type="checkbox">
         <label>  Checked</label></td>
-    </tr>
+    </tr> -->
 </table>
 {% endblock content%}

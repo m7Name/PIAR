@@ -1,5 +1,5 @@
 {% load static %}
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
@@ -10,8 +10,11 @@
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<link rel="shortcut icon" href="https://www.piar.ee/assets/images/2.png" type="image/png">
+
+
 <style>
-body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 #container {
 	margin: 0px auto;
 	width: 100%;
@@ -53,21 +56,71 @@ p {
 br {
   line-height: 80%;
 }
+
+#video {
+  /*border: 1px solid black;
+  box-shadow: 2px 2px 3px black;*/
+  width:900px;
+  height:670px;
+  margin-left: auto;
+}
+
+#photo {
+  border: 1px solid black;
+  box-shadow: 2px 2px 3px black;
+  width:320px;
+  height:240px;
+  margin-left: 35%;
+  margin-bottom: 10%;
+}
+
+#canvas {
+  display:none;
+}
+
+.camera {
+  width: 340px;
+  display:inline-block;
+}
+
+.output {
+  width: 340px;
+  display:inline-block;
+}
+
+#startbutton {
+  display:block;
+  position:relative;
+  margin-left:auto;
+  margin-right:auto;
+  bottom:32px;
+  background-color: rgba(0, 150, 0, 0.5);
+  box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  font-family: "Lucida Grande", "Arial", sans-serif;
+  color: rgba(255, 255, 255, 1.0);
+}
+
+.contentarea {
+  font-size: 16px;
+  font-family: "Lucida Grande", "Arial", sans-serif;
+  width: 760px;
+}
+
 </style>
+
 <body class="w3-light-grey">
   <div class="w3-top">
     <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
         <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
         <a href="/" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Home</a>
         <a href="{% url 'dashboard' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Dashboard"><i class="fa fa-wrench w3-margin-right"></i>Dashboard</a>
-        <a href="{% url 'gallery' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Photo"><i class="fa fa-camera-retro w3-margin-right"></i>Photo <span class="w3-badge w3-green">10</span></a>
+        <a href="{% url 'gallery' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Photo"><i class="fa fa-camera-retro w3-margin-right"></i>Photo</a>
         <a href="{% url 'check' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Check list"><i class="fa fa-check-square-o w3-margin-right"></i>Check list</a>
         <a href="{% url 'admin:index' %}" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account"><i class="fa fa-cubes w3-margin-right"></i>Administration</a>
         <a href="{% url 'logout' %}" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account"><i class="fa fa-sign-out w3-margin-right"></i>Logout</a>
     </div>
     </div>
-<!-- w3-content defines a container for fixed size centered content, 
-and is wrapped around the whole page content, except for the footer in this example -->
 <div class="w3-content" style="max-width:1400px">
 
 <!-- Header 
@@ -77,71 +130,53 @@ and is wrapped around the whole page content, except for the footer in this exam
 </header>
 -->
 <!-- Grid -->
-<div class="w3-row " style="margin-top: 25px;">
+<div class="w3-row ">
 
 <!-- Blog entries -->
-<div class="w3-col l8 s12">
+<div class="w3-col l8 s12" style="padding-top: 45px;">
   <!-- Blog entry  1 -->
   <div class="w3-card-4 w3-margin w3-white">
     <div class="w3-container">
       <h3><b>Camera</b></h3>
-      <h5>Description, <span class="w3-opacity"><#code></span></h5>
+      <h5>Description, <span class="w3-opacity">#comecode$#</span></h5>
     </div>    
-    <video autoplay="true" id="videoElement"></video>     
+             <!-- Camera -->
+             
+              <video style="max-width: 1280px; max-height: 720px;" id="video" >Video stream not available.</video>
+              <form action="inventory_sell/" id="saveForm" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input name="im" type="hidden" id="id_hidden_image_field" value="" />
+                <input  name="ch" id="number" type="hidden">              
+                <button  id="startbutton" form="saveForm"  name="mybtn" type="submit">Take photo</button>
+              </form>  
+              <canvas style="display: none;" id="canvas">
+              </canvas>
+              <div class="output" style="display: none;">
+                <img style="display: none;" id="photo"> 
+                    
+              </div>          
+         <!-- END Camera -->
   </div>
   <hr>
 <!-- END BLOG ENTRIES 1  -->
 
-
- <!-- Blog entry  2 -->
-
-  <div class="w3-card-4 w3-margin w3-white" style="margin: auto; width: 60%;">
-    <div class="w3-container">
-      <h3><b>Previous photo</b></h3>
-      <h5>Description, <span class="w3-opacity"><code></span></h5>
-    </div> 
-    <img src="http://farm6.staticflickr.com/5444/17679973232_568353a624_m.jpg" width="100%"  >
-  </div>
-  <hr>
-  
 
 
 <!-- END BLOG ENTRIES 2-->
 </div>
 
 <!-- Introduction menu -->
-<div class="w3-col l4">
+<div class="w3-col l4" style="padding-top: 45px;">
   <!-- About Card -->
-  <div class="w3-card-2 w3-margin w3-margin-top">
-    <head>
-      <div class="container">
-      <img  src="{% static 'stiker.png' %}"  style=" border-style: solid; border-color: rgb(99, 35, 35); background-color: rgb(255, 255, 255); width:100%">
-      
-      <div class="sticker-item">
-        <h4> {{orders.order_client_name}}</h4>        
-      </div>
-      <div class="sticker-info">
-        <p>DISCRIPTION: {{orders.order_product_name}}</p>
-        <br>
-        <p>PCS/CTN: {{orders.order_done_pcs}}</p>        
-        <p>S/N: {{orders.order_code}}</p>
-        <br>        
-        <p>MEASUREMENT: {{orders.order_code}}</p>        
-        <p>GROSS WEIGHT: {{orders.order_code}}</p>
-        
-        <br>
-        <p>MADE IN: Estonia</p> 
-        <p>DATE CODE: {{orders.order_end_date}}</p>      
-      </div>
-    </div>
-    </head>
+  <div class="w3-card-2 w3-margin w3-margin-top"> 
+    <embed style="padding: 10px;" src="{% static '\orders\Piar OÜ\BB60\t33321\pdf\1.pdf' %}" width="100%" height="470 px" />
     <div class="w3-container w3-white">      </div>
   </div><hr>
   
   <!-- Posts -->
   <div class="w3-card-2 w3-margin">
     <div class="w3-container w3-padding"> 
-      <h4>Work</h4>
+       <!--<h4>Work</h4> -->
     </div>
     <ul class="w3-ul w3-hoverable w3-white">
       <li class="w3-padding-16">
@@ -175,11 +210,148 @@ and is wrapped around the whole page content, except for the footer in this exam
 </div>
 
 <!-- END GRID -->
-</div><br>
-
-<!-- END w3-content -->
 </div>
+<!-- END w3-content -->
+<script>
+(function() {
+  // The width and height of the captured photo. We will set the
+  // width to the value defined here, but the height will be
+  // calculated based on the aspect ratio of the input stream.
 
+  var width = 1280;    // We will scale the photo width to this
+  var height = 720;     // This will be computed based on the input stream
+
+  // |streaming| indicates whether or not we're currently streaming
+  // video from the camera. Obviously, we start at false.
+
+  var streaming = false;
+
+  // The various HTML elements we need to configure or control. These
+  // will be set by the startup() function.
+
+  var video = null;
+  var canvas = null;
+  var photo = null;
+  var startbutton = null;
+  var pic = null;
+
+  function startup() {
+    video = document.getElementById('video');
+    canvas = document.getElementById('canvas');
+    photo = document.getElementById('photo');
+    startbutton = document.getElementById('startbutton');  
+
+    navigator.mediaDevices.getUserMedia({video: true, audio: false})
+    .then(function(stream) {
+      video.srcObject = stream;
+      video.play();
+    })
+    .catch(function(err) {
+      console.log("An error occurred: " + err);
+    });
+
+    video.addEventListener('canplay', function(ev){
+      if (!streaming) {
+        height = video.videoHeight / (video.videoWidth/width);
+      
+        // Firefox currently has a bug where the height can't be read from
+        // the video, so we will make assumptions if this happens.
+      
+        if (isNaN(height)) {
+          height = width / (16/9);
+        }
+      
+        video.setAttribute('width', width);
+        video.setAttribute('height', height);
+        canvas.setAttribute('width', width);
+        canvas.setAttribute('height', height);
+        streaming = true;
+      }
+    }, false);
+
+    startbutton.addEventListener('click', function(ev){     
+      takepicture();
+      take_snapshot();
+      ev.preventDefault();
+    }, false);
+    
+    clearphoto();
+  }
+
+  // Fill the photo with an indication that none has been
+  // captured.
+
+  function clearphoto() {
+    var context = canvas.getContext('2d');
+    context.fillStyle = "#fcfefe ";
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    var data2 = canvas.toDataURL('image/png');
+    photo.setAttribute('src', data2);    
+  }
+  
+  // Capture a photo by fetching the current contents of the video
+  // and drawing it into a canvas, then converting that to a PNG
+//var dataURL = canvas.getElementById('video').toDataURL("image/png");
+//document.getElementById('photo').value = dataURL;
+//console.log(dataURL)
+  // format data URL. By drawing it on an offscreen canvas and then
+  // drawing that to the screen, we can change its size and/or apply
+  // other changes before drawing it.
+
+  function takepicture() {
+    var context = canvas.getContext('2d');
+    if (width && height) {
+      canvas.width = width;
+      canvas.height = height;
+      context.drawImage(video, 0, 0, width, height);
+    
+      var data = canvas.toDataURL('image/png');
+      photo.setAttribute('src', data);
+      
+      pic = document.getElementById("canvas").toDataURL("image/png");
+      pic = pic.replace(/^data:image\/(png|jpg);base64,/, "");
+      document.getElementById('id_hidden_image_field').value = pic; 
+      console.log(pic)       
+      //console.log(data);      
+    } else {
+      clearphoto();
+    }
+  }
+    window.addEventListener('load', startup, false);
+})();
+
+
+</script>
+
+<script>
+
+function take_snapshot() { 
+      var shutter = new Audio();
+      shutter.autoplay = false;
+      shutter.src = navigator.userAgent.match(/Firefox/) ? '{% static 'shutter.ogg' %}' : '{% static 'shutter.mp3' %}';
+      shutter.play();   
+      document.getElementById('id_hidden_image_field').value = save();  
+      wait(2000); 
+      
+      }
+
+// function post(path, parameters) {
+//     var form = $('<form></form>');
+
+//     form.attr("method", "post");
+//     form.attr("action", path);
+
+//     $.each(parameters, function(key, value) {
+//         var field = $('<input></input>');
+
+//         field.attr("type", "hidden");
+//         field.attr("name", key);
+//         field.attr("value", value);
+
+//         form.append(field);
+//     });
+</script>
+</div>
 </body>
-
 </html>

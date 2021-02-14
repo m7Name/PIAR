@@ -107,11 +107,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-DATE_FORMAT = 'd E Y'
-DATETIME_FORMAT = 'd-m-Y H:i:s'
-TIME_ZONE = 'Europe/Helsinki'
-
-USE_I18N = True
+TIME_ZONE = 'Europe/Istanbul'
+TIME_INPUT_FORMATS = ('%H:%M:%S')
+TIME_FORMAT = 'H:i:s'
+DATE_FORMAT = 'd.m.y'
+USE_I18N = False
 USE_L10N = False
 USE_TZ = True
 
@@ -119,8 +119,8 @@ FIRST_DAY_OF_WEEK = 1
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 STATIC_URL = '/static/'
-
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
