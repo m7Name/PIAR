@@ -153,9 +153,37 @@ br {
               </canvas>
               <div class="output" style="display: none;">
                 <img style="display: none;" id="photo"> 
-                    
+                <script>
+                  document.addEventListener("keydown", function(event){
+                  if(event.key === "p"){
+                    document.querySelector("button[type='submit']").click();
+                  } 
+                });
+                  </script>
               </div>          
-         <!-- END Camera -->
+         <!-- END Camera 
+        
+         <script>
+                  document.onkeypress = keyPressFunction;
+               
+                 function keyPressFunction(e) {
+                 var s = String.fromCharCode(e.which);
+                   if ( s === "p"){
+                    $( "#saveForm" ).submit();
+                   }
+                 }
+                 </script>   
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        -->
   </div>
   <hr>
 <!-- END BLOG ENTRIES 1  -->
@@ -169,7 +197,7 @@ br {
 <div class="w3-col l4" style="padding-top: 45px;">
   <!-- About Card -->
   <div class="w3-card-2 w3-margin w3-margin-top"> 
-    <embed style="padding: 10px;" src="{% static '\orders\Piar OÜ\BB60\t33321\pdf\1.pdf' %}" width="100%" height="470 px" />
+    <embed style="padding: 10px;" src="../static/orders/{{orders.order_client_name}}/{{orders.order_product_name}}/{{orders.order_code}}/PDF/{{done_pcs}}.pdf" width="100%" height="470 px" />
     <div class="w3-container w3-white">      </div>
   </div><hr>
   
@@ -182,7 +210,7 @@ br {
       <li class="w3-padding-16">
         <i class="w3-left w3-margin-right fa fa-cog fa-spin w3-xxxlarge"></i>
         <span class="w3-large">PROGRESS</span><br>
-        <span>{{orders.order_done_pcs}} / {{orders.order_pcs}}</span>
+        <span>{{done_pcs}} / {{orders.order_pcs}}</span>
       </li>
       <li class="w3-padding-16">
         <i class="w3-left w3-margin-right fa fa-barcode w3-xxxlarge"></i>
@@ -196,7 +224,7 @@ br {
       </li>   
       <li class="w3-padding-16 w3-hide-medium w3-hide-small">
         <i class="w3-left w3-margin-right fa fa-cube w3-xxxlarge"></i>
-        <span class="w3-large">{{orders.order_product_name}} [rev. 0.01US]</span><br>
+        <span class="w3-large">{{orders.order_product_name}} [rev. {{prods.product_revision}}]</span><br>
         <span>{{orders.order_client_name}}</span>        
       </li>  
     </ul>
@@ -268,7 +296,7 @@ br {
         streaming = true;
       }
     }, false);
-
+    
     startbutton.addEventListener('click', function(ev){     
       takepicture();
       take_snapshot();

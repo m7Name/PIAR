@@ -9,6 +9,7 @@ PALET = (
 class Client(models.Model):
     client_name = models.CharField(max_length=100, unique=True)
     client_info = models.CharField(max_length=100)
+    client_logo_220x220 =models.ImageField(upload_to='logo')
     REQUIRED_FIELDS = ['client_name']
     class Meta:
         verbose_name = "Client"

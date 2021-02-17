@@ -14,9 +14,9 @@
             
             <input type="button" onclick="window.location.href='unmark/';" value="#" />
           </form>
-        <hr>  
+        <!--<hr>  
           <p>Search by Photo Code</p>
-          <input type="text" placeholder="Search.." name="search">
+          <input type="text" placeholder="Search.." name="search"> -->
         </div>              
       <br>
 
@@ -44,7 +44,7 @@
       <tr style="margin: 50px;">
         <td sty>{{photo.photo_code}}</td>
         <td><a href="/{{photo.photo_dir}}"> <i class="fa fa-file-image-o" aria-hidden="true"></i></a></td>
-        <td><a href="#"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+        <td><a href="/{{photo.photo_pdf_dir}}"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
         <td>{{photo.photo_time}}</td>
         <td>{{photo.photo_date}}</td>
         

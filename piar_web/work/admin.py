@@ -8,7 +8,11 @@ from django.utils.translation import gettext_lazy as _
 
 
 class ClientAdmin(admin.ModelAdmin):
-    list_display = ('client_name', 'client_info')
+    def Client_logo(self, obj):
+        return mark_safe('<a href="/{0}"><img src="/media/{0}" style="width: 45px; height:45px;" /></a>'. format(obj.client_logo_220x220))
+    Client_logo.short_description = 'View'
+    Client_logo.allow_tags = True
+    list_display = ('client_name', 'client_info', 'Client_logo')
     search_fields = ('client_name', 'client_info')
     filter_horizontal = ()
     list_filter = ()
